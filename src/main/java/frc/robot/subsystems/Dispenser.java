@@ -19,6 +19,7 @@ public class Dispenser extends SubsystemBase {
 
     public Dispenser() {
         mMotor = new WPI_TalonSRX(CanID.DispenserMotor);
+        addChild("Dispenser motor", mMotor);
     }
 
     public void start() {

@@ -27,6 +27,7 @@ public class DriveTrain extends SubsystemBase {
         mRightMotor.setInverted(true);
 
         mDrive = new DifferentialDrive(mLeftMotor, mRightMotor);
+        addChild("Drive", mDrive);
     }
 
     public void stop() {

@@ -29,6 +29,7 @@ public class Thrower extends SubsystemBase {
         mThrower = new WPI_TalonSRX(CanID.ThrowerMotor);
         mThrower.setNeutralMode(NeutralMode.Coast);
         // etc...
+        addChild("Thrower motor", mThrower);
     }
 
     public void start() {

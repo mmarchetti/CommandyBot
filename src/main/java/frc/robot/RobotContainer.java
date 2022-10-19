@@ -20,7 +20,7 @@ public class RobotContainer {
     private DTXboxController mController;
 
     // Feature flags and configuration parameters
-    private final boolean haveThrower = false;
+    private final boolean haveThrower = true;
     private final double kThrowerWaitTime = 0.6;
 
     // Commands
