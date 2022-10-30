@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import frc.robot.DataLogger;
 import frc.robot.Constants.CanID;
 import frc.robot.Constants.Units;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -60,9 +61,15 @@ public class DriveTrain extends SubsystemBase {
         return wheelRevs * kWheelCircumference;
     }
 
-    private static double metersToEncoderTicks(double meters) {
-        double wheelRevs = meters / kWheelCircumference;
-        double motorRevs = wheelRevs * kGearRatio;
-        return motorRevs * kTicksPerRev;
+    // private static double metersToEncoderTicks(double meters) {
+    // double wheelRevs = meters / kWheelCircumference;
+    // double motorRevs = wheelRevs * kGearRatio;
+    // return motorRevs * kTicksPerRev;
+    // }
+
+    public void LogData(DataLogger log) {
+        log.LogNumber("MotorPower", mLeftMotor.getMotorOutputPercent(), "side", "left");
+        log.LogNumber("MotorPower", mRightMotor.getMotorOutputPercent(), "side",
+                        "right");
     }
 }

@@ -82,4 +82,8 @@ public class RobotContainer {
     public Command getAutonomousCommand() {
         return mAutoCommand;
     }
+
+    public void LogData(DataLogger log) {
+        mDrive.LogData(log);
+    }
 }
