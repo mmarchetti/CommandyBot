@@ -52,11 +52,13 @@ public class RobotContainer {
 
             // @formatter:off
             mStartThrowingCandyCommand = sequence(
+                new PrintCommand("Start throwing"),
                 instant(mThrower::start, mThrower),
                 wait(kThrowerWaitTime),
                 instant(mDispenser::start, mDispenser));
 
             mStopThrowingCandyCommand = sequence(
+                new PrintCommand("Stop throwing"),
                 instant(mDispenser::stop, mDispenser),
                 wait(kThrowerWaitTime),
                 instant(mThrower::stop, mThrower));

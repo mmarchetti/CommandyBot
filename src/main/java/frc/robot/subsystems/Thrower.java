@@ -53,6 +53,7 @@ public class Thrower extends SubsystemBase {
         if (running) {
             double speed = SmartDashboard.getNumber("Thrower speed", 5.0);
             mThrower.set(TalonSRXControlMode.Velocity, throwerMotorVelocity(speed));
+            System.out.println("Setting thrower speed: " + speed);
         } else {
             mThrower.set(TalonSRXControlMode.PercentOutput, 0);
         }

@@ -35,6 +35,7 @@ public class Dispenser extends SubsystemBase {
         double power = 0;
         if (running) {
             power = SmartDashboard.getNumber("Dispense power", 0.3);
+            System.out.println("Setting dispenser power: " + power);
         }
         mMotor.set(TalonSRXControlMode.PercentOutput, power);
     }

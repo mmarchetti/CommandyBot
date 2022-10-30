@@ -18,7 +18,7 @@ public final class Constants {
         // Motor IDs are perhaps all wrong
         public static final int LeftMotor = 7;
         public static final int RightMotor = 1;
-        public static final int DispenserMotor = 99;
+        public static final int DispenserMotor = 98;
         public static final int ThrowerMotor = 99;
     }
 
