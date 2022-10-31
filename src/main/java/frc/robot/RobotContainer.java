@@ -83,7 +83,7 @@ public class RobotContainer {
         return mAutoCommand;
     }
 
-    public void LogData(DataLogger log) {
-        mDrive.LogData(log);
+    public void LogData() {
+        mDrive.LogData();
     }
 }

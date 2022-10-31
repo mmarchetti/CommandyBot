@@ -4,7 +4,7 @@
 
 package frc.robot.subsystems;
 
-import frc.robot.DataLogger;
+import frc.robot.Log;
 import frc.robot.Constants.CanID;
 import frc.robot.Constants.Units;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -67,9 +67,8 @@ public class DriveTrain extends SubsystemBase {
     // return motorRevs * kTicksPerRev;
     // }
 
-    public void LogData(DataLogger log) {
-        log.LogNumber("MotorPower", mLeftMotor.getMotorOutputPercent(), "side", "left");
-        log.LogNumber("MotorPower", mRightMotor.getMotorOutputPercent(), "side",
-                        "right");
+    public void LogData() {
+        Log.Number("LMotorPower", mLeftMotor.getMotorOutputPercent());
+        Log.Number("RMotorPower", mRightMotor.getMotorOutputPercent());
     }
 }

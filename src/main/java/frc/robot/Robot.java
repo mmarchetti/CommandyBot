@@ -18,14 +18,14 @@ public class Robot extends TimedRobot {
 
     private RobotContainer m_robotContainer;
     private final boolean kLoggingEnabled = true;
-    private DataLogger mDataLogger;
+    private Log mDataLogger;
 
     @Override
     public void robotInit() {
         m_robotContainer = new RobotContainer();
 
         if (kLoggingEnabled) {
-            mDataLogger = new DataLogger();
+            mDataLogger = new Log();
         }
     }
 
@@ -34,7 +34,7 @@ public class Robot extends TimedRobot {
         CommandScheduler.getInstance().run();
         if (kLoggingEnabled && isEnabled()) {
             mDataLogger.periodic();
-            m_robotContainer.LogData(mDataLogger);
+            m_robotContainer.LogData();
         }
     }
 
