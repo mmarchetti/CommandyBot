@@ -36,6 +36,8 @@ public class DriveTrain extends SubsystemBase {
     }
 
     public void arcadeDrive(double speed, double rot, boolean squareInputs) {
+        Log.Number("InSpeed", speed);
+        Log.Number("InRotation", rot);
         mDrive.arcadeDrive(speed, rot, squareInputs);
     }
 
