@@ -15,17 +15,23 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
  */
 public class Robot extends TimedRobot {
     private Command m_autonomousCommand;
-
     private RobotContainer m_robotContainer;
+    private boolean loggingEnabled = true;
 
     @Override
     public void robotInit() {
+        Log.InitLog();
         m_robotContainer = new RobotContainer();
     }
 
     @Override
     public void robotPeriodic() {
         CommandScheduler.getInstance().run();
+
+        if (loggingEnabled && isEnabled()) {
+            // only log when enabled so things don't get crazy
+            m_robotContainer.LogData();
+        }
     }
 
     @Override

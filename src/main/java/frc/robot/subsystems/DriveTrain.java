@@ -4,8 +4,10 @@
 
 package frc.robot.subsystems;
 
+import frc.robot.Log;
 import frc.robot.Constants.CanID;
 import frc.robot.Constants.Units;
+
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -64,5 +66,15 @@ public class DriveTrain extends SubsystemBase {
         double wheelRevs = meters / kWheelCircumference;
         double motorRevs = wheelRevs * kGearRatio;
         return motorRevs * kTicksPerRev;
+    }
+
+    private void LogMotor(WPI_TalonSRX motor, String name) {
+        String base = String.format("drive.%s.", name);
+        Log.Double(base + "percent", motor.getMotorOutputPercent());
+    }
+
+    public void LogData() {
+        LogMotor(mLeftMotor, "left");
+        LogMotor(mRightMotor, "right");
     }
 }
