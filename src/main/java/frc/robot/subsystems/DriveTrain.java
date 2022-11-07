@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import frc.robot.Log;
 import frc.robot.Constants.CanID;
 import frc.robot.Constants.Units;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -31,10 +32,12 @@ public class DriveTrain extends SubsystemBase {
     }
 
     public void stop() {
-        mDrive.arcadeDrive(0, 0);
+        arcadeDrive(0, 0, false);
     }
 
     public void arcadeDrive(double speed, double rot, boolean squareInputs) {
+        Log.Number("in.speed", speed);
+        Log.Number("in.rotation", rot);
         mDrive.arcadeDrive(speed, rot, squareInputs);
     }
 
@@ -60,9 +63,18 @@ public class DriveTrain extends SubsystemBase {
         return wheelRevs * kWheelCircumference;
     }
 
-    private static double metersToEncoderTicks(double meters) {
-        double wheelRevs = meters / kWheelCircumference;
-        double motorRevs = wheelRevs * kGearRatio;
-        return motorRevs * kTicksPerRev;
+    // private static double metersToEncoderTicks(double meters) {
+    // double wheelRevs = meters / kWheelCircumference;
+    // double motorRevs = wheelRevs * kGearRatio;
+    // return motorRevs * kTicksPerRev;
+    // }
+
+    private void LogMotor(WPI_TalonSRX motor, String side) {
+        Log.Number("drive.pct", motor.getMotorOutputPercent(), "side", side);
+    }
+
+    public void LogData() {
+        LogMotor(mLeftMotor, "left");
+        LogMotor(mRightMotor, "right");
     }
 }
