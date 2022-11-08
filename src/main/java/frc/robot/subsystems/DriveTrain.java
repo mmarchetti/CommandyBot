@@ -31,14 +31,10 @@ public class DriveTrain extends SubsystemBase {
         addChild("Drive", mDrive);
     }
 
-    public void stop() {
-        arcadeDrive(0, 0, false);
-    }
-
-    public void arcadeDrive(double speed, double rot, boolean squareInputs) {
-        Log.Number("in.speed", speed);
-        Log.Number("in.rotation", rot);
-        mDrive.arcadeDrive(speed, rot, squareInputs);
+    public void arcadeDrive(double speed, double rot, boolean square, String source) {
+        Log.Number("in.speed", speed, "source", source);
+        Log.Number("in.rotation", rot, "source", source);
+        mDrive.arcadeDrive(speed, rot, square);
     }
 
     public double getLeftDistance() {

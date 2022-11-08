@@ -18,6 +18,6 @@ public class TeleopDriveCommand extends CommandBase {
     public void execute() {
         double speed = mController.getLeftY();
         double rotation = mController.getRightX();
-        mDrive.arcadeDrive(speed, rotation, true);
+        mDrive.arcadeDrive(speed, rotation, true, "driver");
     }
 }

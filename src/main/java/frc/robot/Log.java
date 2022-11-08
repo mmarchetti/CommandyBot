@@ -24,7 +24,18 @@ public class Log {
         mQueue = new ArrayBlockingQueue<String>(kMaxQueueSize);
         mThread = new Thread(this::backgroundThread);
         mThread.start();
+        Init();
+        mInstance = this;
+    }
 
+    public void Init() {
+        try {
+            if (mSocket != null) {
+                mSocket.close();
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         try {
             mSocket = new Socket(kLogHost, kLogPort);
             mSocketStream = new DataOutputStream(mSocket.getOutputStream());
@@ -32,7 +43,6 @@ public class Log {
         } catch (Exception e) {
             System.out.println(e);
         }
-        mInstance = this;
     }
 
     private void backgroundThread() {
@@ -40,7 +50,7 @@ public class Log {
             try {
                 String data = mQueue.take();
                 mSocketStream.writeBytes(data);
-                // System.out.println(data);
+                System.out.print(data);
             } catch (Exception e) {
                 System.out.println(e);
             }
@@ -67,11 +77,6 @@ public class Log {
         QueueData(data);
     }
 
-    public void LogNumber(String key, double value) {
-        String data = String.format("put %s %d %.3f\n", key, mCurrentTime, value);
-        QueueData(data);
-    }
-
     public void LogBoolean(String key, boolean value, String tagKey, String tagValue) {
         if (value) {
             LogNumber(key, 1, tagKey, tagValue);
@@ -80,25 +85,13 @@ public class Log {
         }
     }
 
-    public void LogBoolean(String key, boolean value) {
-        LogBoolean(key, value, "", "");
-    }
-
     public static void Number(String key, double value, String tagKey,
                     String tagValue) {
         mInstance.LogNumber(key, value, tagKey, tagValue);
     }
 
-    public static void Number(String key, double value) {
-        mInstance.LogNumber(key, value);
-    }
-
     public static void Boolean(String key, boolean value, String tagKey,
                     String tagValue) {
         mInstance.LogBoolean(key, value, tagKey, tagValue);
-    }
-
-    public static void Boolean(String key, boolean value) {
-        mInstance.LogBoolean(key, value);
     }
 }
