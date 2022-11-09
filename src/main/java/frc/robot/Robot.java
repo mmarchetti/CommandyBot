@@ -30,6 +30,7 @@ public class Robot extends TimedRobot {
 
         if (loggingEnabled && isEnabled()) {
             // only log when enabled so things don't get crazy
+            Log.periodic();
             m_robotContainer.LogData();
         }
     }

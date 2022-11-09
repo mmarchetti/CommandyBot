@@ -62,15 +62,14 @@ public class DriveTrain extends SubsystemBase {
         return wheelRevs * kWheelCircumference;
     }
 
-    private static double metersToEncoderTicks(double meters) {
-        double wheelRevs = meters / kWheelCircumference;
-        double motorRevs = wheelRevs * kGearRatio;
-        return motorRevs * kTicksPerRev;
-    }
+    // private static double metersToEncoderTicks(double meters) {
+    // double wheelRevs = meters / kWheelCircumference;
+    // double motorRevs = wheelRevs * kGearRatio;
+    // return motorRevs * kTicksPerRev;
+    // }
 
-    private void LogMotor(WPI_TalonSRX motor, String name) {
-        String base = String.format("drive.%s.", name);
-        Log.Double(base + "percent", motor.getMotorOutputPercent());
+    private void LogMotor(WPI_TalonSRX motor, String side) {
+        Log.Double("drive.pct." + side, motor.getMotorOutputPercent());
     }
 
     public void LogData() {
