@@ -9,28 +9,24 @@ public class Log {
     private static final String kTableName = "Data";
     private static NetworkTable table;
 
-    public static void InitLog() {
+    public static void init() {
         NetworkTableInstance inst = NetworkTableInstance.getDefault();
         table = inst.getTable(kTableName);
     }
 
     public static void periodic() {
-        Int("time", Instant.now().toEpochMilli());
+        putNumber("time", Instant.now().toEpochMilli());
     }
 
-    public static void Double(String key, double value) {
+    public static void putNumber(String key, double value) {
         table.getEntry(key).setDouble(value);
     }
 
-    public static void Int(String key, long value) {
-        table.getEntry(key).setNumber(value);
-    }
-
-    public static void Boolean(String key, boolean value) {
+    public static void putBoolean(String key, boolean value) {
         table.getEntry(key).setBoolean(value);
     }
 
-    public static void String(String key, String value) {
+    public static void putString(String key, String value) {
         table.getEntry(key).setString(value);
     }
 }

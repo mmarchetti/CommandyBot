@@ -69,7 +69,7 @@ public class DriveTrain extends SubsystemBase {
     // }
 
     private void LogMotor(WPI_TalonSRX motor, String side) {
-        Log.Double("drive.pct." + side, motor.getMotorOutputPercent());
+        Log.putNumber("drive.pct." + side, motor.getMotorOutputPercent());
     }
 
     public void LogData() {

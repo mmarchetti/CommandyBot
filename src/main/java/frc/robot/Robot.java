@@ -20,7 +20,7 @@ public class Robot extends TimedRobot {
 
     @Override
     public void robotInit() {
-        Log.InitLog();
+        Log.init();
         m_robotContainer = new RobotContainer();
     }
 
